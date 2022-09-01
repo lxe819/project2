@@ -15,11 +15,18 @@ import Logout from './local storage/Logout';
 
 function App() {
 
+  const userInfo = {
+    username: "user", 
+    password: "pw", 
+    siteInfo: [], 
+  }
+  localStorage.setItem(userInfo.username, JSON.stringify(userInfo)); 
+
   // States for the library
     const [categoriesDataFetched, setCategoriesDataFetched] = useState({}); 
     const [catDataFinal, setCatDataFinal] = useState({}); 
     const [selectedCat, setSelectedCat] = useState();
-    const [userDetails, setUserDetails] = useState(JSON.parse(localStorage.getItem("hello"))); 
+    const [userDetails, setUserDetails] = useState(JSON.parse(localStorage.getItem("user"))); 
     // const [inputObj, setInputObj] = useState(JSON.parse(localStorage.getItem("hello")).siteInfo); 
     const [inputObj, setInputObj] = useState(userDetails.siteInfo); 
 

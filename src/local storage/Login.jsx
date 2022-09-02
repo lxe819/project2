@@ -29,6 +29,10 @@ function Login( {setUserDetails, setInputObj} ) {
         navigate("/signup")
     }
 
+    const handleGuestUser =() => {
+        navigate("/")
+    }
+
 
 
     return (
@@ -43,8 +47,9 @@ function Login( {setUserDetails, setInputObj} ) {
             </div>
             <div>
                 <h3 className="text-xl font-semibold text-center">Don't have an account? Sign up for one now!</h3>
-                <div className="nav-buttons flex justify-center">
-                    <button onClick={handleSignUp} className="btn btn-outline btn-accent mt-6">Create New Account</button>
+                <div className="nav-buttons flex flex-col items-center">
+                    <button onClick={handleSignUp} className="btn btn-outline btn-accent mt-6 w-5/12">Create New Account</button>
+                    <button onClick={handleGuestUser} className="btn btn-outline mt-5 w-5/12">No thanks, Sign in as Guest User</button>
                 </div>
             </div>
         </div>

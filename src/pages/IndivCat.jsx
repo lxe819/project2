@@ -9,6 +9,7 @@ function IndivCat( {catDataFinal, setSelectedCat, selectedCat} ) {
 
     let nameToDisplay = ""; 
     let selectedId; 
+    // console.log("catDataFinal:", catDataFinal);
     catDataFinal?.map(eachCat => {
         if (eachCat.urlName === catSelected){
             nameToDisplay = eachCat.displayedName; 
@@ -17,7 +18,7 @@ function IndivCat( {catDataFinal, setSelectedCat, selectedCat} ) {
     })
 
 
-    console.log(selectedId);
+    // console.log(selectedId);
 
     useEffect(() => {
         fetch(`https://wger.de/api/v2/exercise/?format=json&language=2&limit=1000&category=${selectedId}`)
@@ -25,10 +26,6 @@ function IndivCat( {catDataFinal, setSelectedCat, selectedCat} ) {
         .then((data) => setSelectedCat(data)); 
     }, []); 
 
-
-    // const removeRegex = (text) => {
-    //     return text.replace(/(<p[^>]+?>|<p>|<\/p>)/img, ""); 
-    //   }
 
 
     // SOURCE: https://www.geeksforgeeks.org/how-to-strip-out-html-tags-from-a-string-using-javascript/
@@ -47,7 +44,7 @@ function IndivCat( {catDataFinal, setSelectedCat, selectedCat} ) {
 
 
     //* Don't understand why this didn't work. 
-        // const filter = allTheExs?.map(exercise => exercise.description !== "<p>.</p>")
+        // const filter = allTheExs?.map(exercise => exercise.description !== "<p>.</p>" || !("description" in exercise))
 
         // const exToBeDisplayed = filter?.map((exercise, index) => (
         //   <div id={exercise.id} key={exercise.id} className="card w-96 p-10 shadow-inner bg-slate-600">
@@ -59,7 +56,7 @@ function IndivCat( {catDataFinal, setSelectedCat, selectedCat} ) {
 
     return (
         <div className="m-8">
-            <h1 className="text-4xl font-bold">{nameToDisplay} Exercises</h1>
+            <h1 className="text-5xl font-bold text-center mb-10">{nameToDisplay} Exercises</h1>
             <div className="flex flex-row flex-wrap gap-5 justify-center mt-8">
                 {exToBeDisplayed}
             </div>

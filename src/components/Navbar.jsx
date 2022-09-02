@@ -6,9 +6,10 @@ function Navbar( {userDetails, setUserDetails, inputObj} ) {
     const navigate = useNavigate(); 
     const handleSignOut = () => {
         setUserDetails({...userDetails, siteInfo: inputObj}); 
-        localStorage.setItem(userDetails.username, JSON.stringify(userDetails)); 
-        // navigate("/logout");
+        // localStorage.setItem(userDetails.username, JSON.stringify(userDetails)); 
+        localStorage.setItem(userDetails.username, JSON.stringify({...userDetails, siteInfo: inputObj})); 
         alert("Your workout has been saved!")
+        navigate("/logout");
     }
 
     return (

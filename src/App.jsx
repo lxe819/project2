@@ -8,24 +8,24 @@ import { useState } from "react";
 import Login from './local storage/Login';
 import SignUp from './local storage/SignUp';
 import './index.css'
-import Navbar from './components/Navbar';
 import Logout from './local storage/Logout';
 
 
 
 function App() {
 
-  const userInfo = {
-    username: "user", 
-    password: "pw", 
-    siteInfo: [], 
-  }
-  localStorage.setItem(userInfo.username, JSON.stringify(userInfo)); 
+  // const userInfo = {
+  //   username: "user", 
+  //   password: "pw", 
+  //   siteInfo: [], 
+  // }
+  // localStorage.setItem(userInfo.username, JSON.stringify(userInfo)); 
 
   // States for the library
     const [categoriesDataFetched, setCategoriesDataFetched] = useState({}); 
     const [catDataFinal, setCatDataFinal] = useState({}); 
     const [selectedCat, setSelectedCat] = useState();
+
     const [userDetails, setUserDetails] = useState(JSON.parse(localStorage.getItem("user"))); 
     // const [inputObj, setInputObj] = useState(JSON.parse(localStorage.getItem("hello")).siteInfo); 
     const [inputObj, setInputObj] = useState(userDetails.siteInfo); 
@@ -34,8 +34,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/signup" element={<SignUp setUserDetails={setUserDetails} />} />
-        <Route path="/login" element={<Login setUserDetails={setUserDetails} />} />
+        <Route path="/signup" element={<SignUp setUserDetails={setUserDetails} setInputObj={setInputObj} />} />
+        <Route path="/login" element={<Login setUserDetails={setUserDetails} setInputObj={setInputObj} />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/" element={<Layout setUserDetails={setUserDetails} inputObj={inputObj} userDetails={userDetails} />}>
           <Route index element={<Homepage />} />
